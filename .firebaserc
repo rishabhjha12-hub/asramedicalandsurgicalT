@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "asramedicalandsurgicalstest",
+    "staging": "asramedicalandsurgicalstest"
+  },
+  "targets": {},
+  "etags": {}
+}
