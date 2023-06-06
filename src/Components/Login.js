@@ -1,8 +1,40 @@
 import React, { useState } from 'react'
 import { auth } from '../Config/Config'
 import { Link } from 'react-router-dom'
-import { Navbar } from './Navbar';
+import { Navbar, Navbar1 } from './Navbar';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import firebase from 'firebase';
+import Footer from './Footer';
 
+toast.configure();
+//var provider = new firebase.auth.GoogleAuthProvider();
+//  const SignInWithFirebase=(props)=>{
+    
+//     firebase.auth()
+   
+//     .signInWithPopup(provider).then(function(result) {
+      
+//        var user = result.user;
+         
+//     props.history.push('/');
+//        console.log("user",user)
+//        console.log("email",user.email)
+//        console.log("name",user.displayName)
+     
+//     }).catch(function(error) {
+       
+         
+//        console.log(error.code)
+//        console.log(error.message)
+//     });
+
+//}
+const mystyle={
+    body:{
+        height:"100vh"
+    }
+}
 export const Login = (props) => {
 
     const [email, setEmail] = useState('');
@@ -16,12 +48,22 @@ export const Login = (props) => {
             setPassword('');
             setError('');
             props.history.push('/');
+            toast.info('logged in successfully', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+            });
         }).catch(err => setError(err.message));
+       
     }
-
+  
     return (
-        <div className='container'>
-            <Navbar />
+        <div className='container' style={mystyle.body}>
+            <Navbar1 />
             <br />
             <h2>Login</h2>
             <br />
@@ -38,9 +80,11 @@ export const Login = (props) => {
             </form>
             {error && <span className='error-msg'>{error}</span>}
             <br/>
+            {/* <button onClick={SignInWithFirebase}>signin with google</button>  */}
             <span>Don't have an account? Register
                 <Link to="signup"> Here</Link>
             </span>
+            <Footer/>
         </div>
     )
 }

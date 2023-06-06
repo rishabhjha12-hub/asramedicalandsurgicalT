@@ -1,11 +1,11 @@
 import React from 'react'
-import { Navbar } from './Navbar'
+import { Navbar, Navbar1 } from './Navbar'
 
 export const NotFound = () => {
     return (
       
         <div>
-              <Navbar />
+              <Navbar1 />
             notfound
         </div>
     )

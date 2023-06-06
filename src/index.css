@@ -34,22 +34,39 @@ body {
 }
 .footer {
    
-    position: fixed;
+    /* position: fixed;
     
     bottom: 0;
 
     width: 100%;
     background-color:black;
+    color: white; */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
     color: white;
+    text-align: center;
+    
     
     
   }
   .footerp{
     display: flex;
-    justify-content: space-around;
+    margin:0.5rem;
+    /* justify-content: space-between; */
+    justify-content: center;
+  }
+  .fp{
+    display: flex;
+    flex-wrap: wrap;
   }
 .lin{
-    margin-left: 3.5%;
+
+    display: flex;
+    margin-left:1.2rem;
+    justify-content: space-between;
     color: yellowgreen;
 }
 
@@ -59,6 +76,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 30px;
+    background-color: grey;
 }
 
 .navbox .leftside {
@@ -136,6 +154,7 @@ h1 {
     align-items: center;
     padding: 20px;
     flex-wrap: wrap;
+    margin-bottom: 80px;
     
 }
 

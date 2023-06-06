@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { CartContext } from '../Global/CartContext'
-import { Navbar } from './Navbar';
+import { Navbar, Navbar1 } from './Navbar';
 import { Icon } from 'react-icons-kit'
 import { ic_add } from 'react-icons-kit/md/ic_add'
 import { ic_remove } from 'react-icons-kit/md/ic_remove'
@@ -25,7 +25,7 @@ export const Cart = ({ user }) => {
 
     return (
         <>
-            <Navbar user={user} />
+            <Navbar1 user={user} />
             <>
                 {shoppingCart.length !== 0 && <h1>Cart</h1>}
                 <div className='cart-container'>

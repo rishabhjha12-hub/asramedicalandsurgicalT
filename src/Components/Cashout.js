@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { auth, db } from '../Config/Config'
 import { CartContext } from '../Global/CartContext'
-import { Navbar } from './Navbar';
+import { Navbar, Navbar1 } from './Navbar';
 import { useHistory } from 'react-router-dom'
 
 export const Cashout = (props) => {
@@ -60,7 +60,7 @@ export const Cashout = (props) => {
 
     return (
         <>
-            <Navbar user={props.user} />
+            <Navbar1 user={props.user} />
             <div className='container'>
                 <br />
                 <h2>Cashout Details</h2>

@@ -1,9 +1,22 @@
 import React, { useState } from 'react'
+
+import emailjs from '@emailjs/browser';
+
+
 import { auth, db } from '../Config/Config'
 import { Link } from 'react-router-dom'
-import { Navbar } from './Navbar';
+import { Navbar, Navbar1 } from './Navbar';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Footer from './Footer';
+
+toast.configure();
+
+
 
 export const Signup = (props) => {
+   
+   
 
     // defining state
     const [name, setName] = useState('');
@@ -12,8 +25,16 @@ export const Signup = (props) => {
     const [error, setError] = useState('');
 
     // signup
+    const mystyle={
+        body:{
+            height:"100vh"
+        }
+    }
+    
     const signup = (e) => {
+      
         e.preventDefault();
+       
         auth.createUserWithEmailAndPassword(email, password).then((cred) => {
             db.collection('SignedUpUsersData').doc(cred.user.uid).set({
                 Name: name,
@@ -25,24 +46,38 @@ export const Signup = (props) => {
                 setPassword('');
                 setError('');
                 props.history.push('/login');
+               
+               
+
+               
             }).catch(err => setError(err.message));
         }).catch(err => setError(err.message));
+        toast.info('signed up successfully', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+        });
+      
     }
 
     return (
-        <div className='container'>
-            <Navbar />
+        <div className='container' style={mystyle.body}>
+            <Navbar1 />
             <br />
             <h2>Sign up</h2>
             <br />
-            <form autoComplete="off" className='form-group' onSubmit={signup}>
+            <form autoComplete="off" className='form-group' id='formm'  onSubmit={signup}>
                 <label htmlFor="name">Name</label>
                 <input type="text" className='form-control' required
-                    onChange={(e) => setName(e.target.value)} value={name} />
+                    onChange={(e) => setName(e.target.value)} value={name} name='to_name'/>
                 <br />
                 <label htmlFor="email">Email</label>
                 <input type="email" className='form-control' required
-                    onChange={(e) => setEmail(e.target.value)} value={email} />
+                    onChange={(e) => setEmail(e.target.value)} value={email} name='reply_to' />
                 <br />
                 <label htmlFor="passowrd">Password</label>
                 <input type="password" className='form-control' required
@@ -55,6 +90,7 @@ export const Signup = (props) => {
             <span>Already have an account? Login
                 <Link to="login"> Here</Link>
             </span>
+            <Footer/>
         </div>
     )
 }

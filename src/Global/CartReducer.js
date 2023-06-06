@@ -30,6 +30,15 @@ export const CartReducer = (state, action) => {
                 return state;
             }
             else {
+                toast.info('product added to cart go to cart for checkout', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                });
                 product = action.product;
                 product['qty'] = 1;
                 product['TotalProductPrice'] = product.ProductPrice * product.qty;
